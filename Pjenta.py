@@ -11,7 +11,7 @@ import winreg
 init()
 print(" ")
 print(Fore.YELLOW + "====================== PJENTA WIN10 DEBLOATER V.0.1 ======================")
-print(Fore.WHITE + "======                                                               =====")
+print(Fore.WHITE + "=============== https://github.com/m4xLMAO/Pjenta-Debloater ==============")
 print(Fore.WHITE + "================= Author: maxLMAO - youtube.com/@m4xLMAO =================")
 print(" ")
 print(Fore.WHITE + "Purpose: Optimize your computer or laptop for improved performance.")
