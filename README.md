@@ -6,7 +6,7 @@ THIS PROGRAM IS SCANNED WITH VIRUSTOTAL
 
 * This program will optimize your computer or laptop for improved performance. 
 
-# NOTE!
+# NOTE
 
 * It's highly advisable to create a system restore point before initiating any modifications to your device. 
 Please be aware that we cannot accept responsibility for any potential damage to your device.
