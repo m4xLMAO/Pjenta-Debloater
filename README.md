@@ -7,11 +7,9 @@
 </div>
 
 
-THIS PROGRAM IS SCANNED WITH VIRUSTOTAL
+**What is this?** - This program will optimize your computer or laptop for improved performance. 
 
-* This Program is made by maxLMAO.
-
-* This program will optimize your computer or laptop for improved performance. 
+This program is scanned with VirusTotal
 
 # NOTE
 
