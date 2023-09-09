@@ -3,7 +3,7 @@
 </div>
 
 <div align="center">
-  <h1># Pjenta Debloater for Windows 10</h1>
+  <h1>Pjenta Debloater for Windows 10</h1>
 </div>
 
 
