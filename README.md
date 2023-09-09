@@ -2,7 +2,9 @@
   <img src="https://i.imgur.com/e85wfuR.png" width="60" height="60">
 </div>
 
-#                      Pjenta Debloater for Windows 10
+<div align="center">
+  <h1># Pjenta Debloater for Windows 10</h1>
+</div>
 
 
 THIS PROGRAM IS SCANNED WITH VIRUSTOTAL
