@@ -1,4 +1,7 @@
+<img src="static/logo-pjenta-debloater.png" style=" width:60px ; height:60px "  >
+
 # Pjenta Debloater for Windows 10
+
 
 THIS PROGRAM IS SCANNED WITH VIRUSTOTAL
 
