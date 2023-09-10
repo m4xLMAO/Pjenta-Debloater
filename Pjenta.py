@@ -3,6 +3,7 @@ import sys
 import os, shutil
 from pathlib import Path
 import winshell
+import subprocess
 import winreg
 
 
@@ -34,16 +35,15 @@ while True:
             print(Fore.WHITE + "      1. Clean " + Fore.CYAN + "Temporary Files")
             print(Fore.WHITE + "      2. Clean " + Fore.CYAN + "Recycle Bin")
             print(Fore.WHITE + "      3. Disable all " + Fore.LIGHTBLUE_EX + "Startup Apps" + Fore.RED + " [This requires administrator]")
-            print(Fore.WHITE + "      4. Disable all " + Fore.LIGHTBLUE_EX + "Background Apps")
-            print(Fore.WHITE + "      5. Disable all " + Fore.LIGHTBLUE_EX + "Visual Effects")
-            print(Fore.WHITE + "      6. high performance " + Fore.LIGHTMAGENTA_EX + "Power Plan")
-            print(Fore.WHITE + "      7. Repair " + Fore.LIGHTMAGENTA_EX + "Windows Setup " + Fore.WHITE + "files")
+            print(Fore.WHITE + "      4. Disable all " + Fore.LIGHTBLUE_EX + "Visual Effects")
+            print(Fore.WHITE + "      5. high performance " + Fore.LIGHTMAGENTA_EX + "Power Plan" + Fore.RED + " [Not recommended on Laptops]")
+            print(Fore.WHITE + "      6. Repair " + Fore.LIGHTMAGENTA_EX + "Windows System " + Fore.WHITE + "files" + Fore.RED + " [This requires administrator]" + Fore.WHITE )
             print("--------------------------------------------------------------------------")
             print(" ")
             Choice = input("      Choice (" + Fore.GREEN + "1" + Fore.WHITE + "/" + Fore.GREEN + "6" + Fore.WHITE + "): ")
             print()
             if Choice != "1" and Choice != "2" and Choice != "3" and Choice != "4" and Choice != "5" and Choice != "6":
-                 print(Fore.RED + "==> ERROR:" + Fore.WHITE + " Choose an existing number option.") 
+                 print(Fore.RED + "==> ERROR:" + Fore.WHITE + " Choose an existing option.\n") 
 
             def one():
                     try:
@@ -87,7 +87,7 @@ while True:
                     winshell.recycle_bin().empty(confirm=False, show_progress=False, sound=False)
                     print(Fore.GREEN + "Finished cleaning " + Fore.LIGHTGREEN_EX + "Recycle bin")
                 except:
-                    print(Fore.RED + "==> ERROR: Your Recycle Bin is Empty")
+                    print(Fore.RED + "\n==> ERROR: Your Recycle Bin is Empty\n")
 
             if Choice == "2":
                 two()
@@ -114,7 +114,7 @@ while True:
                     for name in startup_app_names:
                         print(Fore.LIGHTCYAN_EX + "- " + name + "\n")
                
-                print(Fore.RED + "Disabling " + Fore.LIGHTYELLOW_EX + "all Startup Apps" + Fore.WHITE + "...\n")
+                print(Fore.GREEN + "Disabling " + Fore.LIGHTYELLOW_EX + "all Startup Apps" + Fore.GREEN + "...\n")
 
                 def disable_all_startup_apps():
                                     key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, r"Software\Microsoft\Windows\CurrentVersion\Run", 0, winreg.KEY_WRITE)
@@ -123,12 +123,11 @@ while True:
                                         index = 0
                                         while True:
                                             name, _, _ = winreg.EnumValue(key, index)
-                                            # Delete the startup app entry
                                             winreg.DeleteValue(key, name)
                                             index += 1
                                             print(Fore.GREEN + "All " + Fore.LIGHTGREEN_EX + "Startup Apps " + Fore.WHITE + "have been disabled.\n")
                                     except WindowsError:
-                                        print(Fore.RED + "==> ERROR:" + Fore.LIGHTYELLOW_EX + " An error has occured. Try running it as admininstrator.\n")
+                                        print(Fore.RED + "==> ERROR:" + Fore.WHITE + " An error has occured. Try running it as admininstrator.\n")
 
 
                 if __name__ == "__main__":
@@ -140,3 +139,60 @@ while True:
 
             if Choice == "3":
                 three()
+
+            def four():
+                try:
+                    def disable_visual_effects():
+                        print("Disabeling " + Fore.LIGHTYELLOW_EX + "Visual Effects" + Fore.WHITE + "...\n")
+                        subprocess.Popen(['systempropertiesperformance.exe'])
+                        
+                        os.system("timeout /t 2 /nobreak > nul")
+
+                        try:
+                            key = winreg.OpenKey(winreg.HKEY_CURRENT_USER, 'Control Panel\\System\\Performance')
+                            
+                            winreg.SetValueEx(key, 'VisualEffects', 0, winreg.REG_DWORD, 2)
+                            
+                            winreg.CloseKey(key)
+                            print("\nFinished disabeling " + Fore.LIGHTYELLOW_EX + "Visual Effects" + Fore.WHITE + "...\n")
+                        except Exception as e:
+                            print(f"An error occurred: {e}")
+
+                    if __name__ == "__main__":
+                        disable_visual_effects()
+                
+                except OSError:
+                     print(Fore.RED + "==> ERROR: " + Fore.WHITE + "Run the program with administrator.\n")
+            
+            if Choice == "4":
+                 four()
+
+            def five():
+
+                command = 'powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c' 
+
+                try:
+                    print("Changing " + Fore.LIGHTYELLOW_EX + "Power Plan" + Fore.WHITE + "...\n")
+                    subprocess.run(command, check=True, shell=True)
+                    print("\nFinished changing " + Fore.LIGHTYELLOW_EX + "Power Plan" + Fore.WHITE + "...\n")
+                except subprocess.CalledProcessError as e:
+                    print(f"Error: {e}")
+            
+            if Choice == "5":
+                five()
+
+            def six():
+                command = ["DISM", "/Online", "/Cleanup-Image", "/RestoreHealth"]
+
+                try:
+                    print("Repairing " + Fore.LIGHTYELLOW_EX + "Windows System Files" + Fore.WHITE + "...\n")
+                    subprocess.run(command, check=True)
+                    print("\nFinished repairing " + Fore.LIGHTYELLOW_EX + "Windows System Files " + Fore.WHITE + "...\n")
+                except subprocess.CalledProcessError:
+                    print(Fore.RED + "\n ==> ERROR:" + Fore.WHITE + " An error has occured. Try running it as admininstrator.\n")
+
+            if Choice == "6":
+                 six()
+
+            
+                

@@ -7,11 +7,11 @@
 </div>
 
 
-**What is this?** - This program will optimize your computer or laptop for improved performance. 
+**What is this?** - This program can optimize your computer or laptop for improved performance. It's a simple and lightweight tool to boost performance on your laptop or computer.
 
 This program is scanned with VirusTotal
 
-# NOTE
+# A note
 
 * It's highly advisable to create a system restore point before initiating any modifications to your device. 
 Please be aware that we cannot accept responsibility for any potential damage to your device.
