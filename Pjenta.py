@@ -41,9 +41,9 @@ while True:
             print(Fore.WHITE + "      7. Repair " + Fore.LIGHTMAGENTA_EX + "Windows System " + Fore.WHITE + "files" + Fore.RED + " [This requires administrator]" + Fore.WHITE )
             print("--------------------------------------------------------------------------")
             print(" ")
-            Choice = input("      Choice (" + Fore.GREEN + "1" + Fore.WHITE + "/" + Fore.GREEN + "6" + Fore.WHITE + "): ")
+            Choice = input("      Choice (" + Fore.GREEN + "1" + Fore.WHITE + "/" + Fore.GREEN + "7" + Fore.WHITE + "): ")
             print()
-            if Choice != "1" and Choice != "2" and Choice != "3" and Choice != "4" and Choice != "5" and Choice != "6":
+            if Choice != "1" and Choice != "2" and Choice != "3" and Choice != "4" and Choice != "5" and Choice != "6" and Choice != "7":
                  print(Fore.RED + "==> ERROR:" + Fore.WHITE + " Choose an existing option.\n") 
 
             def one():
