@@ -36,8 +36,9 @@ while True:
             print(Fore.WHITE + "      2. Clean " + Fore.CYAN + "Recycle Bin")
             print(Fore.WHITE + "      3. Disable all " + Fore.LIGHTBLUE_EX + "Startup Apps" + Fore.RED + " [This requires administrator]")
             print(Fore.WHITE + "      4. Disable all " + Fore.LIGHTBLUE_EX + "Visual Effects")
-            print(Fore.WHITE + "      5. high performance " + Fore.LIGHTMAGENTA_EX + "Power Plan" + Fore.RED + " [Not recommended on Laptops]")
-            print(Fore.WHITE + "      6. Repair " + Fore.LIGHTMAGENTA_EX + "Windows System " + Fore.WHITE + "files" + Fore.RED + " [This requires administrator]" + Fore.WHITE )
+            print(Fore.WHITE + "      5. Disable all " + Fore.LIGHTBLUE_EX + "Background Apps")
+            print(Fore.WHITE + "      6. high performance " + Fore.LIGHTMAGENTA_EX + "Power Plan" + Fore.RED + " [Not recommended on Laptops]")
+            print(Fore.WHITE + "      7. Repair " + Fore.LIGHTMAGENTA_EX + "Windows System " + Fore.WHITE + "files" + Fore.RED + " [This requires administrator]" + Fore.WHITE )
             print("--------------------------------------------------------------------------")
             print(" ")
             Choice = input("      Choice (" + Fore.GREEN + "1" + Fore.WHITE + "/" + Fore.GREEN + "6" + Fore.WHITE + "): ")
@@ -168,6 +169,20 @@ while True:
                  four()
 
             def five():
+                try:             
+                    print(Fore.LIGHTYELLOW_EX + "Opening settings" + Fore.WHITE + "...\n")
+                    background_apps_settings_path = "ms-settings:privacy-backgroundapps"
+                    os.system(f"start {background_apps_settings_path}")
+                except:
+                     print(Fore.RED + "==> ERROR: " + Fore.WHITE + "Run the program with administrator.\n")
+
+                print(Fore.LIGHTYELLOW_EX + "Succesfully opened Settings" + Fore.WHITE + "...\n")
+
+
+            if Choice == "5":     
+                five()
+
+            def six():
 
                 command = 'powercfg /setactive 8c5e7fda-e8bf-4a96-9a85-a6e23a8c635c' 
 
@@ -178,10 +193,10 @@ while True:
                 except subprocess.CalledProcessError as e:
                     print(f"Error: {e}")
             
-            if Choice == "5":
-                five()
+            if Choice == "6":
+                six()
 
-            def six():
+            def seven():
                 command = ["DISM", "/Online", "/Cleanup-Image", "/RestoreHealth"]
 
                 try:
@@ -191,8 +206,8 @@ while True:
                 except subprocess.CalledProcessError:
                     print(Fore.RED + "\n ==> ERROR:" + Fore.WHITE + " An error has occured. Try running it as admininstrator.\n")
 
-            if Choice == "6":
-                 six()
+            if Choice == "7":
+                 seven()
 
             
                 
