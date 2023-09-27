@@ -11,7 +11,7 @@ import winreg
 
 init()
 print(" ")
-print(Fore.YELLOW + "====================== PJENTA WIN10 DEBLOATER V.0.1 ======================")
+print(Fore.YELLOW + "====================== PJENTA WIN10 DEBLOATER V.0.1.1 ======================")
 print(Fore.WHITE + "=============== https://github.com/m4xLMAO/Pjenta-Debloater ==============")
 print(Fore.WHITE + "================= Author: maxLMAO - youtube.com/@m4xLMAO =================")
 print(" ")
@@ -156,8 +156,8 @@ while True:
                             
                             winreg.CloseKey(key)
                             print("\nFinished disabeling " + Fore.LIGHTYELLOW_EX + "Visual Effects" + Fore.WHITE + "...\n")
-                        except Exception as e:
-                            print(f"An error occurred: {e}")
+                        except:
+                            print(Fore.RED + "ERROR: " + Fore.WHITE + "An error has occurred.\n")
 
                     if __name__ == "__main__":
                         disable_visual_effects()
